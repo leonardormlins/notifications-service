@@ -1,4 +1,4 @@
-import { Notification } from 'src/application/entities/notification';
+import { Notification } from '@application/entities/notification';
 
 export abstract class NotificationsRepository {
   abstract create(notification: Notification): Promise<void>;
