@@ -7,6 +7,7 @@ import { ReadNotification } from '@application/use-cases/read-notification';
 import { UnreadNotification } from '@application/use-cases/unread-notification';
 import { CountRecipientNotifications } from '@application/use-cases/count-recipient-notifications';
 import { GetRecipientNotifications } from '@application/use-cases/get-recipient-notifications';
+import { NotificationPatchViewModel } from '../view-models/notification-patch-view-model';
 
 @Controller('notifications')
 export class NotificationsController {
@@ -25,7 +26,7 @@ export class NotificationsController {
       notificationId: id,
     });
 
-    return { message: `Notification ${id} successfully canceled!` };
+    return NotificationPatchViewModel.toHTTP('canceled', id);
   }
 
   @Patch(':id/read')
@@ -34,7 +35,7 @@ export class NotificationsController {
       notificationId: id,
     });
 
-    return { message: `Notification ${id} successfully read!` };
+    return NotificationPatchViewModel.toHTTP('read', id);
   }
 
   @Patch(':id/unread')
@@ -43,7 +44,7 @@ export class NotificationsController {
       notificationId: id,
     });
 
-    return { message: `Notification ${id} successfully unread!` };
+    return NotificationPatchViewModel.toHTTP('unread', id);
   }
 
   @Get('count/from/:recipientId')
