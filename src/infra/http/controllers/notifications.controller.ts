@@ -24,6 +24,8 @@ export class NotificationsController {
     await this.cancelNotification.execute({
       notificationId: id,
     });
+
+    return { message: `Notification ${id} successfully canceled!` };
   }
 
   @Patch(':id/read')
@@ -31,6 +33,8 @@ export class NotificationsController {
     await this.readNotification.execute({
       notificationId: id,
     });
+
+    return { message: `Notification ${id} successfully read!` };
   }
 
   @Patch(':id/unread')
@@ -38,6 +42,8 @@ export class NotificationsController {
     await this.unreadNotification.execute({
       notificationId: id,
     });
+
+    return { message: `Notification ${id} successfully unread!` };
   }
 
   @Get('count/from/:recipientId')
